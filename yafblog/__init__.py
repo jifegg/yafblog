@@ -41,7 +41,6 @@ def close(error):
 
 def init_db():
     with app.open_resource('schema.sql', mode='r') as f:
-        #print(f.read())
         db.execute(f.read(), [])
     #db.commit()
 
