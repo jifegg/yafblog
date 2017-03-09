@@ -42,7 +42,6 @@ def close(error):
 def init_db():
     with app.open_resource('schema.sql', mode='r') as f:
         db.execute(f.read(), [])
-    #db.commit()
 
 def close_test_db():
     db.execute('DROP DATABASE `'+app.config['DB']+'`;CREATE DATABASE `'+app.config['DB']+'` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;')
