@@ -1,0 +1,48 @@
+{% extends "home/page.html" %}
+{% block style %}
+<link href="{{ url_for('home.static', filename='css/code.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% set dict_categorys = categorys|list_to_dict %}
+{% set dict_tags = tags|list_to_dict %}
+
+{% block content %}
+<div class="md-content">
+    <div class="header">
+        <h1 class="title">{{ article.title }}</h1>
+        <div class="meta uk-margin-bottom">
+            <div class="meta_time uk-margin-right uk-display-inline-block">
+                <span uk-icon="icon: calendar"></span>
+                <span>{{ article.addtime|datetimeformat }}</span>
+            </div>
+            <div class="meta_category uk-margin-right uk-display-inline-block">
+                <span uk-icon="icon: hashtag"></span>
+                <a href="{{url_for('home.index_category', category_id=article.category)}}" class="u-link-default">{{ dict_categorys[article.category|string].name }}</a>
+            </div>
+            <div class="meta_tag uk-display-inline-block">
+                <span uk-icon="icon: tag"></span>
+                {% for tag_id in article.tags %}
+                {% if loop.index > 1%},{% endif %}
+                <a href="{{url_for('home.index_tag', tag_id=tag_id)}}" class="u-link-default">{{ dict_tags[tag_id].name }}</a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        {% autoescape false %}
+        {{ article.content_html}}
+        {% endautoescape %}
+    </div>
+    <div class="footer">
+    </div>
+</div>
+{% endblock %}
+
+{% block rightside %}
+    <div class="toc" uk-sticky="offset:100">
+        <div class="doc doc-toc"></div>
+        {% autoescape false %}
+            {{ article.toc_html}}
+        {% endautoescape %}
+    </div>
+{% endblock %}

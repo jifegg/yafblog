@@ -1,0 +1,113 @@
+html, .uk-h1, .uk-h2, .uk-h3, .uk-h4, .uk-h5, .uk-h6, h1, h2, h3, h4, h5, h6 {
+    font-family: -apple-system, "Helvetica Neue", Helvetica, "Nimbus Sans L", Arial, "Liberation Sans", "PingFang SC", "Hiragino Sans GB", "Source Han Sans CN", "Source Han Sans SC", "Microsoft YaHei", "Wenquanyi Micro Hei", "WenQuanYi Zen Hei", "ST Heiti", SimHei, "WenQuanYi Zen Hei Sharp", sans-serif;
+}
+.uk-navbar-item, .uk-navbar-nav>li>a, .uk-navbar-toggle {
+    font-family: -apple-system, "Helvetica Neue", Helvetica, "Nimbus Sans L", Arial, "Liberation Sans", "PingFang SC", "Hiragino Sans GB", "Source Han Sans CN", "Source Han Sans SC", "Microsoft YaHei", "Wenquanyi Micro Hei", "WenQuanYi Zen Hei", "ST Heiti", SimHei, "WenQuanYi Zen Hei Sharp", sans-serif;
+}
+.font-hei {
+    font-family: -apple-system, "Helvetica Neue", Helvetica, "Nimbus Sans L", Arial, "Liberation Sans", "PingFang SC", "Hiragino Sans GB", "Source Han Sans CN", "Source Han Sans SC", "Microsoft YaHei", "Wenquanyi Micro Hei", "WenQuanYi Zen Hei", "ST Heiti", SimHei, "WenQuanYi Zen Hei Sharp", sans-serif;
+}
+.font-kai {
+    font-family: Baskerville, Georgia, "Liberation Serif", "Kaiti SC", STKaiti, "AR PL UKai CN", "AR PL UKai HK", "AR PL UKai TW", "AR PL UKai TW MBE", "AR PL KaitiM GB", KaiTi, KaiTi_GB2312, DFKai-SB, "TW\-Kai", serif;
+}
+.font-song {
+    font-family: Georgia, "Nimbus Roman No9 L", "Songti SC", STSong, "AR PL New Sung", "AR PL SungtiL GB", NSimSun, SimSun, "TW\-Sung", "WenQuanYi Bitmap Song", "AR PL UMing CN", "AR PL UMing HK", "AR PL UMing TW", "AR PL UMing TW MBE", PMingLiU, MingLiU, serif;
+}
+.font-fang-song {
+    font-family: Baskerville, "Times New Roman", "Liberation Serif", STFangsong, FangSong, FangSong_GB2312, "CWTEX\-F", serif;
+}
+sup{
+    font-family: Baskerville, Georgia, "Liberation Serif", "Kaiti SC", STKaiti, "AR PL UKai CN", "AR PL UKai HK", "AR PL UKai TW", "AR PL UKai TW MBE", "AR PL KaitiM GB", KaiTi, KaiTi_GB2312, DFKai-SB, "TW\-Kai", serif;
+}
+a:hover{
+    text-decoration: none;
+    padding-bottom: 2px;
+    border-bottom:1px solid currentColor;
+}
+.uk-navbar{height:60px;}
+.uk-logo{color:#fff;padding-left:0}
+.uk-logo:hover{color:#fff}
+.uk-navbar-item, .uk-navbar-nav>li>a, .uk-navbar-toggle { height:60px; }
+.uk-navbar-nav>li>a{ color: rgba(255,255,255,0.8);position:relative;}
+.uk-navbar-left>a:hover,.uk-navbar-nav>li.uk-active>a,.uk-navbar-nav>li:hover>a{ color: #fff; padding-bottom:0;border-bottom:0;}
+.uk-navbar .uk-button-default{color: rgba(255,255,255,0.8);border-color:rgba(255,255,255,0.8);}
+.uk-navbar .uk-button-default:hover{color:#fff;border-color:#fff;}
+
+.layout .uk-card-header{border-left:5px solid #1e87f0;padding:5px 10px; border-bottom: 1px dashed #ddd;color:#1e87f0}
+.layout .uk-card-body{padding:15px;15px;}
+@media (min-width: 1200px) {
+    .layout .uk-card-header{padding:10px 15px;}
+    .layout .uk-card-body{padding:20px 20px;}
+}
+.u-padding-w{margin:0 5px 5px 5px;}
+.gotop{position:fixed;bottom:50px;right:50px;background: #1e87f0; height: 30px; color: rgba(255,255,255,0.8); border-radius: 50%; width: 30px; text-align: center; line-height: 30px;}
+.gotop:hover{color:#fff;padding:5px;border:0}
+.gotop:link{color:#fff}
+.uk-breadcrumb{height:30px}
+a.u-link-default{color:#666;}
+a.u-link-crose:hover{
+    /*background: linear-gradient(to right, currentColor, currentColor 4px, transparent 4px) repeat-x 0 bottom/7px 1px; */
+    background-image: linear-gradient(to top, currentColor, currentColor 1px, transparent 1px);
+}
+a.u-link-animate{position:relative;}
+a.u-link-animate:hover{ text-decoration: none; border-bottom:0 }
+a.u-link-animate:hover:before{
+    visibility: visible;
+    -webkit-transform: scaleX(1);
+    -moz-transform: scaleX(1);
+    -ms-transform: scaleX(1);
+    -o-transform: scaleX(1);
+    transform: scaleX(1);
+}
+a.u-link-animate:before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: currentColor
+    visibility: hidden;
+    -webkit-transform: scaleX(0);
+    -moz-transform: scaleX(0);
+    -ms-transform: scaleX(0);
+    -o-transform: scaleX(0);
+    transform: scaleX(0);
+    background-color: currentColor;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
+    transition-delay: 0s;
+}
+a.u-link-border{
+    color:#999;
+    padding-bottom:2px;
+    border-bottom:1px solid #999;
+}
+a.u-link-border:hover{
+    color:#666;
+    text-decoration: none;
+    border-color:#666;
+}
+.u-fs-14{font-size:14px;}
+
+.archive-list.uk-list>li:nth-child(n+2){
+    margin-top:0
+}
+
+.md-content blockquote{ margin-top: 20px; border: 1px solid #eee; border-left: 5px solid #1e87f0; padding: 20px; font-size: 1.0em; line-height: 1;font-style:normal}
+.md-content .codehilite pre{color:inherit;background:inherit;border:1px solid #ddd;border-radius:0}
+.md-content h1{font-size:1.5rem;line-height:1.4}
+.md-content h2{font-size:1.25rem;line-height:1.4}
+.md-content h3{font-size:1.0rem;line-height:1.4}
+.md-content h4{font-size:.8rem;line-height:1.4}
+.md-content h5{font-size:.6rem;line-height:1.4}
+.md-content img{ border: 1px solid #ddd; padding: 5px; }
+.md-content h1:before, .md-content h2:before,  .md-content h3:before, .md-content h4:before{ content:""; display:block; height:60px; margin:-60px 0 0; }
+.md-content .header{ border-bottom: 1px solid #ccc; margin-bottom: 20px; }
+#table-of-content{padding:10px 40px;border:1px solid #ddd;margin-top:0;border-top:0}
+#table-of-content li a{color:#666;font-size:14px;}
+
+.doc{ position: relative; padding: 10px; border: 1px solid #ddd; font-size: 12px; }
+.doc:before{ display: inline-block; margin-right: 5px; font-weight: 700; color: #959595; text-transform: uppercase; letter-spacing: 1px; content: "DOC - "; }
+.doc-code:before{content:" CODE - "}
+.doc-toc:before{content:" TOC"}

@@ -1,0 +1,84 @@
+{% extends "home/page.html" %}
+{% set dict_categorys = categorys|list_to_dict %}
+{% set dict_tags = tags|list_to_dict %}
+{% block breadcrumb %}
+{% if category_id %}
+<ul class="breadcrumb">
+    <li class="breadcrumb-item active"><a class="u-link-animate"href="{{ url_for('home.index') }}">首页</a></li>
+    <li class="breadcrumb-item"><a href="{{ url_for('home.category') }}">类别</a></li>
+    <li class="breadcrumb-item"><a href="">{{ dict_categorys[category_id].name }}</a></li>
+</ul>
+{% elif tag_id %}
+<ul class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{ url_for('home.index') }}">首页</a></li>
+    <li class="breadcrumb-item"><a href="{{ url_for('home.tag') }}">标签</a></li>
+    <li class="breadcrumb-item"><a href="">{{ dict_tags[tag_id].name }}</a></li>
+</ul>
+{% elif month %}
+<ul class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{ url_for('home.index') }}">首页</a></li>
+    <li class="breadcrumb-item"><a href="{{ url_for('home.archive') }}">归档</a></li>
+    <li class="breadcrumb-item"><a href="">{{ month }}</a></li>
+</ul>
+{% elif keyword %}
+<ul class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{ url_for('home.index') }}">首页</a></li>
+    <li class="breadcrumb-item"><a href="">搜索：{{ keyword }}</a></li>
+</ul>
+{% endif %}
+{% endblock %}
+
+{% block rightside %}
+<div class="card">
+    <div class="card-header px-2 py-1 "> 分类</div>
+    <div class="card-block px-3 py-2">
+    {% for c in categorys %}
+     <a href="{{ url_for('home.index_category', category_id=c.id) }}" class="font-size-sm pr-1 {% if c.id|string == category_id %}active{% endif %}"> {{ c.name }} {% if c.num > 0 %}<sup>{{ c.num }}</sup>{% endif %}</a>
+    {% endfor %}
+    </div>
+</div>
+<div class="card mt-4">
+    <div class="card-header px-2 py-1">标签 </div>
+    <div class="card-block px-3 py-2">
+        {% for t in tags %}
+        <a href="{{ url_for('home.index_tag', tag_id=t.id) }}" class="font-size-sm pr-1 {% if t.id|string == tag_id %}active{% endif %}"> {{ t.name }} {% if t.num > 0 %}<sup>{{ t.num }}</sup>{% endif %}</a>
+        {% endfor %}
+    </div>
+</div>
+<div class="card mt-4">
+    <div class="card-header px-2 py-1">归档</div>
+    <ul class="list-group list-group-flush">
+    {% for a in archives %}
+    <li class="list-group-item px-3 py-2  {% if loop.index == 1%}border-top-0{% endif %}"><a href=" {{ url_for('home.index_archive', month=a.month) }}" class="font-size-sm {% if a.month == month %}active{% endif %}"> {{ a.month|num_to_date }} {% if a.num > 0 %}<sup>{{ a.num }}</sup>{% endif %}</a></li>
+    {% endfor %}
+    </ul>
+</div>
+<!--
+<div class="card mt-4 mb-4">
+    <div class="card-header px-2 py-1">链接 </div>
+    <div class="card-block px-3 py-2">
+        <a href="javascript" class="pr-1 font-size-sm"> CATE1 </a>
+    </div>
+</div>
+-->
+{% endblock %}
+
+{% block content %}
+    <ul class="list-group">
+        {% for article in articles %}
+        <li class="list-group-item list-group-item-action justify-content-between">
+            <span>
+                <a href="{{ url_for('home.article', article_id=article.id) }}" class="font-weight-bold">{{ article.title }}</a>
+            </span>
+            <span>
+                <a href="{{ url_for('home.index_category', category_id=article.category) }}" class="font-size-sm">#{{ dict_categorys[article.category|string].name }}</a> · <span class="text-muted font-size-sm">{{ article.addtime|datetimeformat }}</span>
+            </span>
+        </li>
+        {% else %}
+        没有文章！
+        {% endfor %}
+    </ul>
+    {% autoescape false %}
+        {{ page_list }}
+    {% endautoescape %}
+ {% endblock %}

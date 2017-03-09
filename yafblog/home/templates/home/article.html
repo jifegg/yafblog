@@ -1,0 +1,46 @@
+{% extends "home/page.html" %}
+{% block style %}
+<link href="{{ url_for('home.static', filename='css/code.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% set dict_categorys = categorys|list_to_dict %}
+{% set dict_tags = tags|list_to_dict %}
+
+{% block content %}
+<div class="article">
+    <header>
+        <h1 class="title">{{ article.title }}</h1>
+        <div class="text-muted font-kai">
+            <span>
+                发表日期：<span>{{ article.addtime|datetimeformat }}</span>
+            </span>
+            <span>
+                &nbsp;&nbsp;|&nbsp;&nbsp;类别：<a href="{{url_for('home.index_category', category_id=article.category)}}" class="u-link-default">{{ dict_categorys[article.category|string].name }}</a>
+            </span>
+            <span>
+                {% if tag_id %}
+                &nbsp;&nbsp;|&nbsp;&nbsp;标签：
+                {% for tag_id in article.tags %}
+                {% if loop.index > 1%},{% endif %}
+                <a href="{{url_for('home.index_tag', tag_id=tag_id)}}" class="u-link-default">{{ dict_tags[tag_id].name }}</a>
+                {% endfor %}
+                {% endif %}
+            </span>
+        </div>
+    </header>
+    <div class="content">
+        {% autoescape false %}
+        {{ article.content_html}}
+        {% endautoescape %}
+    </div>
+</div>
+{% endblock %}
+
+{% block rightside %}
+    <div class="toc">
+        <div class="doc doc-toc"></div>
+        {% autoescape false %}
+            {{ article.toc_html }}
+        {% endautoescape %}
+    </div>
+{% endblock %}

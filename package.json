@@ -1,0 +1,28 @@
+{
+  "name": "yafblog",
+  "version": "1.0.0",
+  "description": "yet another flask blog",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "flask",
+    "blog"
+  ],
+  "author": "trevorxg",
+  "license": "ISC",
+  "devDependencies": {
+    "bootstrap": "^4.0.0-alpha.6",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-csso": "^2.0.0",
+    "gulp-replace": "^0.5.4",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "^2.0.1",
+    "simplemde": "^1.11.2"
+  }
+}

@@ -1,0 +1,64 @@
+<!doctype html>
+<head>
+    <title>Flaskr</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//cdn.bootcss.com/uikit/3.0.0-beta.11/css/uikit.min.css" rel="stylesheet">
+    {% block style %}{% endblock %}
+    <link href="{{ url_for('home.static', filename='css/index.css') }}" rel="stylesheet">
+</head>
+<body>
+    <header uk-sticky="media:960" class="sticky uk-background-primary">
+        <div class="uk-container">
+            <nav class="uk-navbar">
+                <div class="uk-navbar-left">
+                    <a class="uk-navbar-item uk-logo" href="{{ url_for('home.index') }}">YAFBLOG</a>
+                    <ul class="uk-navbar-nav uk-visible@m">
+                        <li class="uk-active">
+                            <a href="{{ url_for('home.index') }}"> 首页</a>
+                        </li>
+                        <li>
+                            <a href="{{ url_for('home.tag') }}"> 类别</a>
+                        </li>
+                        <li>
+                            <a href="{{ url_for('home.category') }}"> 标签</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="uk-navbar-right uk-visible@m">
+                    <div class="uk-navbar-item">
+                        <form action="/search" id="search-form" onsubmit="return false">
+                            <input class="uk-input uk-form-width-small uk-form-width-medium" type="text" id="search-keyword" {% if keyword %}value="{{keyword}}"{% endif %} placeholder="搜索一下，你就知道...">
+                            <button class="uk-button uk-button-default" id="search-btn">搜索</button>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+         </div>
+    </header>
+    <div class="layout uk-container">
+        {% block container %}{% endblock %}
+        <div class="uk-animation-toggle">
+            <a href="#" class="gotop uk-visible@m uk-animation-shake" uk-totop></a>
+        </div>
+    </div>
+    <footer>
+    </footer>
+</body>
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/uikit/3.0.0-beta.11/js/uikit.min.js"></script>
+{% block script %}{% endblock %}
+<script>
+UIkit.sticky('.sticky');
+UIkit.scroll('.gotop');
+$('#search-btn').click(function() {
+    var keyword = $('#search-keyword').val();
+    if ($.trim(keyword) == '') {
+        return false;
+    }
+    var host = $('#search-form').attr('action');
+    window.location.href = host + '/' + keyword;
+    return false;
+});
+</script>
+</html>

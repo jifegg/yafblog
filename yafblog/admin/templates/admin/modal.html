@@ -1,0 +1,31 @@
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 class="modal-title">{{ title }}</h3>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <form id="modal-form" action="{{ action }}" method="post" >
+            <div class="modal-body">
+                {% for form in forms %}
+                {% if form.type == 'msg' %}
+                <span class="{{form.class}}">{{ form.content }}</span>
+                {% elif form.type == 'hidden' %}
+                <input type="hidden" name="{{form.name}}" value="{{ form.value }}">
+                {% elif form.type == 'text' %}
+                <input type="text" class="form-control" name="{{form.name}}" value="{{ form.value }}">
+                {% endif %}
+                {% endfor %}
+            </div>
+            <div class="alert alert-success mx-2 hide" role="alert"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                <button type="submit" class="btn btn-primary submit" data-loadmsg='提交中...'>
+                    <i class="fa fa-circle-o-notch fa-spin fa-fw hide"></i>
+                    <span>确认</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

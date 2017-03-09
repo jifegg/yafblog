@@ -1,0 +1,53 @@
+{% extends "admin/page.html" %}
+{% block content %}
+<div class="card-header font-weight-bold">{% if article %}编辑文章{% else %}添加文章{% endif %}</div>
+<div class="card-block">
+    <div class="card-deck">
+        <div class="card ">
+            <div class="card-header px-3 py-2">文章</div>
+            <div class="card-block text-white ">
+                <div class="d-flex justify-content-center align-items-stretch">
+                    <div class="bg-primary px-4 py-4">{{ article_week }}</div>
+                    <div class="bg-success px-4 py-4">{{ article_month }}</div>
+                    <div class="bg-info px-4 py-3">{{ article_all }}</div>
+                </div>
+                <div class="d-flex justify-content-center align-items-stretch">
+                    <div class="bg-primary px-4 py-2">WEEK</div>
+                    <div class="bg-success px-4 py-2">MONTH</div>
+                    <div class="bg-info px-4 py-2">ALL</div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header px-3 py-2">类别</div>
+            <div class="card-block text-white">
+                <div class="d-flex justify-content-center align-items-stretch">
+                    <div class="bg-success px-4 py-4">{{ category_week }}</div>
+                    <div class="bg-info px-4 py-4">{{ category_month }}</div>
+                    <div class="bg-warning px-4 py-4">{{ category_all }}</div>
+                </div>
+                <div class="d-flex justify-content-center align-items-stretch">
+                    <div class="bg-success px-4 py-2">WEEK</div>
+                    <div class="bg-info px-4 py-2">MONTH</div>
+                    <div class="bg-warning px-4 py-2">ALL</div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header px-3 py-2">标签</div>
+            <div class="card-block text-white">
+                <div class="d-flex justify-content-center align-items-stretch">
+                    <div class="bg-success px-4 py-4">{{ tag_week }}</div>
+                    <div class="bg-info px-4 py-4">{{ tag_month }}</div>
+                    <div class="bg-warning px-4 py-4">{{ tag_all }}</div>
+                </div>
+                <div class="d-flex justify-content-center align-items-stretch">
+                    <div class="bg-success px-4 py-2">WEEK</div>
+                    <div class="bg-info px-4 py-2">MONTH</div>
+                    <div class="bg-warning px-4 py-2">ALL</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "admin/page.html" %}
+{% set active_page = "tag" %}
+{% block content %}
+<div class="card-header font-weight-bold">
+    标签列表
+</div>
+<div class="card-block">
+    <form id="add-tag-form" action="{{ url_for('admin.tag_add') }}" method="post">
+        <div class="form-group row">
+            <div class="col-md-3">
+                <input class="form-control tagname" type="text" name="name" placeholder="标题" value="">
+            </div>
+            <div class="col-md-1">
+                <button type="submit" class="btn btn-secondary submit" data-loadmsg='提交中...'>
+                    <i class="fa fa-circle-o-notch fa-spin fa-fw hide"></i>
+                    <span>添加</span>
+                </button>
+            </div>
+            <div class="alert alert-success col-md-3 hide mb-0" role="alert"></div>
+        </div>
+    </form>
+    <table class="table table-hover table-fixed">
+        <thead class="thead-inverse">
+            <th style="width:5%">#</th>
+            <th style="width:35%">名称</th>
+            <th style="width:10%">数量</th>
+            <th style="width:15%">时间</th>
+            <th style="width:15%">操作</th>
+        </thead>
+        <tbody>
+            {% for tag in tags %}
+            <tr>
+                <td scope="row">{{ tag.id }}</td>
+                <td>{{ tag.name }}</td>
+                <td>{{ tag.num }}</td>
+                <td>{{ tag.addtime|datetimeformat }}</td>
+                <td>
+                    <button class="btn btn-sm btn-outline-primary btn-modal" data-url="{{ url_for('admin.tag_edit', tag_id=tag.id)}}" >编辑</button>
+                    <button class="btn btn-sm btn-outline-danger btn-modal" data-url="{{ url_for('admin.tag_del', tag_id=tag.id)}}">删除</button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% autoescape false %}
+        {{ page_list }}
+    {% endautoescape %}
+</div>
+{% endblock %}

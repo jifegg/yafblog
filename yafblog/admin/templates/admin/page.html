@@ -1,0 +1,38 @@
+{% extends "admin/layout.html" %}
+{% block header %}
+    <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#yf-main-nav" aria-controls="yf-main-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand mr-auto" href="{{ url_for('admin.index') }}">YAFBLOG</a>
+        <span class="navbar-text mr-4">{{ username }}</span>
+        <button class="btn btn-sm btn-outline-danger btn-url mr-2" data-url="{{ url_for('admin.logout') }}">退出</button>
+        <button class="btn btn-sm btn-outline-success btn-url" data-target="_blank" data-url="{{ url_for('home.index') }}">Blog</button>
+    </nav>
+{% endblock %}
+{% block container %}
+{% set navigation_bar = [
+    (url_for('admin.article'), 'article', '文章'),
+    (url_for('admin.category'), 'category', '类别'),
+    (url_for('admin.tag'), 'tag', '标签'),
+] %}
+{% set active_page = active_page|default('article') %}
+<div class="container-fluid">
+<div class=" row pt-4">
+    <div class="col-md-2 bg-faded siderbar">
+        <ul class="nav nav-pills flex-column">
+            {% for href, id, caption in navigation_bar %}
+            <li class="nav-item">
+                <a class="nav-link {% if id == active_page %}active{% endif %}" href="{{ href }}">{{ caption}}</a>
+            </li>
+            {% endfor %}
+          </ul>
+    </div>
+    <div class="col-md-10 offset-md-2 pt-4">
+        <div class="card my-4">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

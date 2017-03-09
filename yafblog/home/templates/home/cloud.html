@@ -1,0 +1,26 @@
+{% extends "home/layout.html" %}
+{% block container %}
+<ul class="breadcrumb mt-4">
+    <li class="breadcrumb-item"><a href="{{ url_for('home.index') }}">首页</a></li>
+    <li class="breadcrumb-item"><a href="">{% if tags %}标签{% elif categorys%}类别{% elif archives%}归档{% endif %}</a></li>
+</ul>
+<div class="cloud pt-3" style="width:60%;margin:auto">
+    {% if tags %}
+        {% for tag in tags %}
+        <a href="{{ url_for('home.index_tag', tag_id=tag.id) }}" rel="{{ tag.num }}">{{ tag.name }}</a>
+        {% endfor %}
+    {% elif categorys %}
+        {% for category in categorys %}
+        <a href="{{ url_for('home.index_category', category_id=category.id) }}" rel="{{ category.num }}">{{ category.name }}</a>
+        {% endfor %}
+    {% elif archives %}
+        {% for archive in archives %}
+        <a href="{{ url_for('home.index_archive', month=archive.month) }}" rel="{{ archive.num }}">{{ archive.month }}</a>
+        {% endfor %}
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block script %}
+{% endblock %}
+

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<head lang="en">
+    <title>Flaskr</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    {% block style %}{% endblock %}
+    <link href="{{ url_for('home.static', filename='css/main.css') }}" rel="stylesheet">
+</head>
+<body>
+    <header class="navbar navbar-toggleable-md navbar-inverse bg-primary">
+        <nav class="container">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#yf-main-nav" aria-controls="yf-main-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" href="{{ url_for('home.index') }}">YAFBLOG</a>
+            <div class="collapse navbar-collapse" id="yf-main-nav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a  class="nav-link" href="{{ url_for('home.index') }}"> 首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a  class="nav-link"href="{{ url_for('home.category') }}"> 类别</a>
+                    </li>
+                    <li class="nav-item">
+                        <a  class="nav-link" href="{{ url_for('home.tag') }}"> 标签</a>
+                    </li>
+                </ul>
+                <form action="/search" id="search-form" class="form-inline" onsubmit="return false">
+                    <input class="form-control mr-sm-2" type="text" id="search-keyword" {% if keyword %}value="{{keyword}}"{% endif %} placeholder="搜索一下，你就知道...">
+                    <button class="btn btn-info my-2 my-sm-0" id="search-btn">搜索</button>
+                </form>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        {% block container %}{% endblock %}
+        <div class="uk-animation-toggle">
+            <a href="#" class="gotop uk-visible@m uk-animation-shake" uk-totop></a>
+        </div>
+    </div>
+    <footer>
+    </footer>
+</body>
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+<script src="{{ url_for('home.static', filename='js/main.min.js') }}"></script>
+{% block script %}{% endblock %}
+</html>

@@ -1,0 +1,12 @@
+{% extends "home/layout.html" %}
+{% block container %}
+<div class="row pt-4">
+    <div class="col-12 col-md-3 push-md-9 ">
+        {% block rightside %}{% endblock %}
+    </div>
+    <div class="col-12 col-md-9 pull-md-3 ">
+        {% block breadcrumb %}{% endblock %}
+        {% block content %}{% endblock %}
+    </div>
+</div>
+{% endblock %}

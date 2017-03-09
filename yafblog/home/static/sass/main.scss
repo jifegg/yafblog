@@ -1,0 +1,157 @@
+// bootstrap variables and mixinx
+@import 'node_modules/bootstrap/scss/variables';
+@import 'node_modules/bootstrap/scss/mixins';
+// override variables
+@import 'variables';
+@import 'mixins';
+
+// bootstrap rest
+@import 'node_modules/bootstrap/scss/normalize';
+@import 'node_modules/bootstrap/scss/print';
+
+// bootstrap core css
+@import 'node_modules/bootstrap/scss/reboot';
+@import 'node_modules/bootstrap/scss/type';
+@import 'node_modules/bootstrap/scss/images';
+@import 'node_modules/bootstrap/scss/code';
+@import 'node_modules/bootstrap/scss/grid';
+@import 'node_modules/bootstrap/scss/tables';
+@import 'node_modules/bootstrap/scss/forms';
+@import 'node_modules/bootstrap/scss/buttons';
+
+// bootstrap components
+
+@import 'node_modules/bootstrap/scss/transitions';
+@import 'node_modules/bootstrap/scss/nav';
+@import 'node_modules/bootstrap/scss/navbar';
+@import 'node_modules/bootstrap/scss/card';
+@import 'node_modules/bootstrap/scss/breadcrumb';
+@import 'node_modules/bootstrap/scss/pagination';
+@import 'node_modules/bootstrap/scss/badge';
+@import 'node_modules/bootstrap/scss/list-group';
+
+
+// bootstrap
+@import "node_modules/bootstrap/scss/utilities";
+
+@import "callout";
+
+@include media-breakpoint-down(md){
+    header.navbar-toggleable-md>.container{
+        width:100%; 
+    }
+}
+
+html,
+button,
+input,
+optgroup,
+select,
+textarea {
+    font-family: $font-hei;
+}
+.font-size-lg{
+    font-size:$font-size-lg;
+}
+.font-size-sm{
+    font-size:$font-size-sm;
+}
+.font-size-xs{
+    font-size:$font-size-xs;
+}
+.font-kai{
+    font-family:$font-kai;
+}
+
+blockquote{
+    @extend .bs-callout;
+    @extend .bs-callout-primary;
+}
+
+h1{
+    @include font-size-zoom($font-size-h1);
+}
+
+h2{
+    @include font-size-zoom($font-size-h2);
+}
+h3{
+    @include font-size-zoom($font-size-h3);
+}
+h4{
+    @include font-size-zoom($font-size-h4);
+}
+h5{
+    @include font-size-zoom($font-size-h5);
+}
+a.active{
+    color:$link-hover-color;
+}
+
+.doc{
+    position: relative;
+    padding: 10px;
+    border: 1px solid #ddd; 
+    font-size: 12px;
+}
+.doc:before{
+    display: inline-block; 
+    margin-right: 5px;
+    font-weight: 700; 
+    color: #959595; 
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    content: "DOC - ";
+}
+.doc-code:before{
+    content:" CODE - "
+}
+.doc-toc:before{
+    content:" TOC"
+}
+#table-of-content{
+    padding:10px 34px;
+    border:1px solid #ddd;
+    margin-top:0;
+    border-top:0;
+}
+#table-of-content li a{
+    color:#666;
+    font-size:14px;
+}
+.article .codehilite pre{
+    color:inherit;
+    background:inherit;
+    border:1px solid #ddd;
+    border-radius:0;
+    @extend .px-3, .py-3;
+}
+.article {
+    a{
+        border-bottom:1px solid $link-color;
+    }
+    a:hover{
+        text-decoration:none;
+        border-color:$link-hover-color;
+    }
+    header{
+        border-bottom: 1px dashed #ddd;
+        @extend .mb-4,.pb-4;
+    }
+    img{ 
+        @extend .img-thumbnail
+    }
+    table{
+        @extend .table, .table-bordered
+    }
+    h2:not(:first-child) {
+        margin-top: 3rem;
+    }
+    h3 {
+        margin-top: 1.5rem;
+    }
+}
+.toc {
+    position: fixed;
+    width: 20%;
+}

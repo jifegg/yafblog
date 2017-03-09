@@ -1,0 +1,94 @@
+.tag-helper{
+    box-sizing: border-box;
+    border: 0 none;
+    padding-left: 6px;
+    background: #fff;
+    color: #666;
+    border: 1px solid #e5e5e5;
+    -webkit-transition: .2s ease-in-out;
+    transition: .2s ease-in-out;
+    -webkit-transition-property: color,background-color,border;
+    transition-property: color,background-color,border;
+
+    position: relative;
+    display: block;
+    color: #666;
+    vertical-align: middle;
+    max-width: 100%;
+    cursor: text;
+    width: 100%;
+    font-size: 14px;
+    line-height: 1.5;
+}
+.tag-helper-input{
+    border: none;
+    box-shadow: none;
+    outline: none;
+    background-color: transparent;
+    padding: 0;
+    text-transform: lowercase;
+    width: 20rem;
+    max-width: 100%;
+}
+.tag-helper-item {
+    display: inline-block;
+    color: #017e66;
+    background-color: rgba(1,126,102,.08);
+    font-size: 13px;
+    text-align: center;
+    margin-right: .5rem;
+    padding: 5px;
+    line-height: 1;
+    position:relative;
+    top:3px;
+}
+.tag-helper-item .remove {
+    cursor:pointer;
+    margin-left: 6px;
+}
+.editor-toolbar{
+    border-top-left-radius: 0; 
+    border-top-right-radius: 0;
+}
+.editor-toolbar a{
+    border-radius:0;
+}
+.CodeMirror{
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.tag-helper-list{
+    width:300px;
+    border:1px solid #eee;
+    padding:0;
+}
+.tag-helper-list li{
+    padding:5px 10px;
+    cursor:pointer;
+}
+.tag-helper-list>li:nth-child(n+2), .tag-helper-panel>li:nth-child(n+2){
+    margin-top:0px;
+}
+.tag-helper-list li.active, .tag-helper-list li:hover{
+    background:#eee;
+}
+.tag-helper-panel{
+    width:300px;
+    border:1px solid #eee;
+    padding: 10px 10px 5px 10px;
+}
+.tag-helper-panel li{
+    display: inline-block;
+    color: #017e66;
+    background-color: rgba(1,126,102,.08);
+    padding: 2px 6px;
+    box-sizing: border-box;
+    margin-right: 5px;
+    margin-bottom:5px;
+    font-size:13px;
+    cursor:pointer;
+}
+.tag-helper-panel li:hover{
+    background:#017e66;
+    color:#fff;
+}
