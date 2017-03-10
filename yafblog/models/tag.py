@@ -34,7 +34,7 @@ class Tag(Model):
         has_one = Tag.findOne('name=?', [self.name])
         if has_one:
             return {'code':-1, 'msg':'标签已存在'}
-        res = super.save()
+        res = super().save()
         if res['code'] :
             Tag.cache()
         return res

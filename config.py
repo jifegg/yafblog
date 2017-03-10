@@ -5,10 +5,10 @@ class Config(object):
     SECRET_KEY='key'
 
 class ProductionConfig(Config):
-    DB='yafblog',
-    HOST='127.0.0.1',
-    USER='root',
-    PASSWORD='123456',
+    DB='yafblog'
+    HOST='127.0.0.1'
+    USER='root'
+    PASSWORD='123456'
 
 class DevelopmentConfig(Config):
     DB='yafblog'
