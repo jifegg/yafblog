@@ -15,14 +15,14 @@ class Tag(Model):
         t = cls.findOne('id=?', [tag_id])
         tag = Tag(__data__=t)
         tag.num = tag.num + 1
-        tag.update(t)
+        tag.update()
 
     @classmethod
     def dec_num(cls, tag_id):
         t = cls.findOne('id=?', [tag_id])
         tag = Tag(__data__=t)
         tag.num = tag.num - 1
-        tag.update(t)
+        tag.update()
 
     @classmethod
     def cache(cls):
@@ -55,8 +55,8 @@ class Tag(Model):
             Tag.cache()
         return res
 
-    def update(self, old):
-        if self.name != old['name']:
+    def update(self, old = None):
+        if old and self.name != old['name']:
             has_one = Tag.findOne('name=?', [self.name])
             if has_one:
                 return {'code':-1, 'msg':'标签已存在'}

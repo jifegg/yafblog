@@ -45,8 +45,8 @@ class Category(Model):
             Category.cache()
         return res
         
-    def update(self, old):
-        if self.name != old['name']:
+    def update(self, old = None):
+        if old and self.name != old['name']:
             has_one = Category.findOne('name=?', [self.name])
             if has_one:
                 return {'code':-1, 'msg':'类别已存在'}

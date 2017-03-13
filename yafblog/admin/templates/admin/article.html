@@ -2,6 +2,7 @@
 {% set active_page = "article" %}
 {% block content %}
 {% set dict_tags = tags|list_to_dict %}
+{% set dict_categorys = categorys|list_to_dict %}
 <div class="card-header font-weight-bold">
     文章列表
     <button class="btn btn-sm btn-outline-success float-right btn-url" data-url="{{ url_for('admin.article_add') }}">添加</button>
@@ -21,10 +22,11 @@
             <tr>
                 <td scope="row">{{ article.id }}</td>
                 <td><a href="{{ url_for('home.article', article_id=article.id)}}" target="_blank">{{ article.title }}</a></td>
-                <td>{{ categorys[article.category]['name'] }}</td>
+                <td>{{ dict_categorys[article.category|string].name }}</td>
                 <td>
                     {% for tag_id in article.tags|split(',') %}
                     {% if loop.index > 1%},{% endif %}
+                    {{ tag_id }}
                     {% if tag_id %}
                     {{ dict_tags[tag_id].name }}
                     {% endif %}
