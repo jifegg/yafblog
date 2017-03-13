@@ -185,7 +185,7 @@ def category_add():
 def category_edit(category_id):
     category_info = Category.findOne('id=?', [category_id])
     if request.method == 'POST':
-        category = Tag(__data__=category_info)
+        category = Category(__data__=category_info)
         name = request.form.get('name', '', type=str)
         if name:
             category.name = name
