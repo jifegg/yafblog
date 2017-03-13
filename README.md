@@ -77,3 +77,6 @@ flask 自带的 server 不适用于生产环境，需要使用其它 server 代�
 - [ ]  文章页添加查看 markdown 原文
 - [ ]  评论功能
 - [ ]  I18N
+
+## LICENSE
+MIT
