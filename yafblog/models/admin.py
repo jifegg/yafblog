@@ -13,9 +13,15 @@ class Admin(Model):
     @classmethod
     def login(cls, username, password):
         info = Admin.findOne('username=?', [username])
-        if  info :
-            password = md5(password.encode('utf-8')).hexdigest()
-            if password == info['password']:
-                return {'code':1, 'info':info}
+        if info and cls.check_pwd(password, info['password']):
+            return {'code':1, 'info':info}
         return {'code':-1, 'msg':'用户不存在或密码错误'}
+
+    @classmethod
+    def check_pwd(cls, pwd, encrypt_pwd):
+        return encrypt_pwd == cls.encrypt_pwd(pwd)
+
+    @classmethod
+    def encrypt_pwd(cls, pwd):
+        return md5(pwd.encode('utf-8')).hexdigest()
 

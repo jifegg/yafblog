@@ -7,6 +7,7 @@
             self.initLogin();
             self.initBtnUrl();
             self.initBtnModal();
+            self.initCommonForm();
         },
         initBtnUrl:function(){
             $('.btn-url').click(function(){
@@ -95,7 +96,6 @@
                     $panel.css("left", $input.position().left + "px")
                     $panel.removeClass('hide');
                     $list.addClass('hide');
-                    console.log('focus');
                 })
                 $('body').on("click", function(e) {
                     if (! $(e.target).parents(".tag-helper-panel").length && ! $(e.target).parents(".tag-helper").length && !$(e.target).hasClass("tag-helper")) {
@@ -143,6 +143,11 @@
                     $panel.addClass('hide');
                 })
             }
+        },
+        initCommonForm:function(){
+            $('.common-submit').each(function(k,v){
+                submitForm('#'+$(v).parents('form').attr('id'));
+            })
         }
     };
     window.YAFAdmin = YAFAdmin;
@@ -157,7 +162,6 @@ function submitForm(ele, callback) {
         var $btnMsg = $submitBtn.find('span');
         var $alert = $form.find('.alert');
         var btnmsg =$btnMsg.html();
-        console.log(btnmsg);
         $submitBtn.attr('disabled', true);
         $btnMsg.html($submitBtn.attr('data-loadmsg'));
         $btnSpin.removeClass('hide');

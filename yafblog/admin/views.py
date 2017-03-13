@@ -270,3 +270,36 @@ def tag_search(keyword):
         return jsonify({'code':1, 'data':res})
     return jsonify({'code':-1})
 
+
+# Account
+@admin.route('/account', methods=['GET', 'POST'])
+@require_login
+def account():
+    if request.method == 'POST':
+        admin = Admin(__data__=session['admin'])
+        print(admin)
+        old_password = request.form.get('old_password', '', type=str)
+        if not old_password:
+            return jsonify({'code':-1, 'msg':'请填写原密码'})
+        elif not Admin.check_pwd(old_password, admin['password']):
+            return jsonify({'code':-1, 'msg':'原密码不正确'})
+
+        new_password = request.form.get('new_password', '', type=str)
+        if not new_password:
+            return jsonify({'code':-1, 'msg':'请填写新密码'})
+
+        new_password_2 = request.form.get('new_password_2', '', type=str)
+        if not new_password_2:
+            return jsonify({'code':-1, 'msg':'请确认新密码'})
+
+        if new_password != new_password_2:
+            return jsonify({'code':-1, 'msg':'两次输入的密码不一致！'})
+        else:
+            admin.password = Admin.encrypt_pwd(new_password)
+        res = admin.update()
+        session.pop('admin', None)
+        return jsonify(res)
+    return render_template('admin/account.html',
+                            username=session['admin']['username'])
+
+
