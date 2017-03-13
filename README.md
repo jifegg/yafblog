@@ -3,12 +3,12 @@
 
 ## 安装
 
-* clone 代码到本地
+#### clone 代码到本地
 ```shell
 git clone git@github.com:jifegg/yafblog.git
 ```
 
-* 安装 virtualenv
+#### 安装 virtualenv
 ```shell
 pip install virtualenv
 cd yafblog
@@ -16,19 +16,19 @@ virtualenv venv
 venv/bin/activate # venv\scripts\activate(windows)
 ```
 
-* 安装依赖
+#### 安装依赖
 ```shell
 npm install .
 ```
 
-* 创建数据库，导入数据表
+#### 创建数据库，导入数据表
 ```mysql
 create database yafblog
 source yafblog/schema.sql
 ```
 > 或者可以通过 flask initdb 方式来导入数据表（需要设置FLASK_APP）
 
-* 运行
+#### 运行
 ```shell
 python run.py
 ```
@@ -36,7 +36,7 @@ python run.py
 
 >后台地址：http://127.0.0.1:5000/admin（默认为 admin/admin）
 
-* 样式修改
+#### 样式修改
 ```shell
 npm install
 gulp # gulp watch
