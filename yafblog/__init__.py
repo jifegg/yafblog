@@ -1,11 +1,10 @@
 import os
-import config
 from flask import Flask, Blueprint, request, session, g, redirect, url_for, abort, render_template, flash
+from .config import configure_app
 from .helpers import datetimeformat, list_to_dict, CacheFile, num_to_date
 
-app = Flask(__name__) 
-app.config.from_object('config.DevelopmentConfig')
-app.config.from_envvar('FLASKR_SETTINGS', silent=True)
+app = Flask(__name__)
+configure_app(app)
 logger = app.logger;
 if app.config['DEBUG'] :
     logger.setLevel('DEBUG')

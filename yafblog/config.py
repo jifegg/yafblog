@@ -1,3 +1,4 @@
+import os
 class Config(object):
     DEBUG = False
     TESTING = False
@@ -19,3 +20,14 @@ class DevelopmentConfig(Config):
 
 class TestingConfig(Config):
     TESTING = True
+
+config = {
+    "production": ProductionConfig,
+    "development": DevelopmentConfig,
+    "testing": TestingConfig,
+}
+
+def configure_app(app):
+    config_name = os.getenv('FLASK_CONFIGURATION', 'development')
+    app.config.from_object(config[config_name])
+    app.config.from_envvar('FLASKR_SETTINGS', silent=True)
