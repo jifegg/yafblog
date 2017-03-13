@@ -27,6 +27,7 @@ create database yafblog
 source yafblog/schema.sql
 ```
 > 或者可以通过 flask initdb 方式来导入数据表（需要设置FLASK_APP）
+
 5. 运行
 ```
 python run.py
