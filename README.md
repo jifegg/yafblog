@@ -31,9 +31,9 @@ source yafblog/schema.sql
 5 运行
 ```
 python run.py
-//前台地址：http://127.0.0.1:5000
-//后台地址：http://127.0.0.1:5000/admin（默认为 admin/admin）
 ```
+>前台地址：http://127.0.0.1:5000
+后台地址：http://127.0.0.1:5000/admin（默认为 admin/admin）
 
 6 样式修改
 ```
