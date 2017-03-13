@@ -5,7 +5,6 @@ recursive-include yafblog/home/static *
 recursive-include yafblog/caches *
 recursive-include tests *
 include yafblog/schema.sql
-include config.py
 include run.py
-include gulpfile.js
 include package.json
+include gulpfile.js
