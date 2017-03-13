@@ -35,7 +35,8 @@ python run.py
 前台地址：http://127.0.0.1:5000
 
 后台地址：http://127.0.0.1:5000/admin（默认为 admin/admin）
-6. 样式修改 
+
+6. 样式修改
 ```
 npm install
 gulp or gulp watch
@@ -43,7 +44,7 @@ gulp or gulp watch
 
 ## 部署
 flask 自带的 server 不适用于生产环境，需要使用其它 server 代替，[请参考文档说明](http://flask.pocoo.org/docs/0.12/deploying/#deployment)。
-推荐使用 gunicorn + nginx + supervisor，[详情参考](http://blog.gutown.com/article/2) 。
+推荐使用 gunicorn + nginx + supervisor 方式，[详情参考](http://blog.gutown.com/article/2) 。
 
 
 ## 功能
