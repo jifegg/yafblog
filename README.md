@@ -18,7 +18,7 @@ venv/bin/activate # venv\scripts\activate(windows)
 
 #### 安装依赖
 ```shell
-npm install .
+pip install . # or add -e
 ```
 
 #### 创建数据库，导入数据表
@@ -27,6 +27,8 @@ create database yafblog
 source yafblog/schema.sql
 ```
 > 或者可以通过 flask initdb 方式来导入数据表（需要设置FLASK_APP）
+
+> 数据库的配置文件在 yafblog/config.py 中，默认加载 DevelopmentConfig 配置
 
 #### 运行
 ```shell
