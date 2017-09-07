@@ -26,7 +26,6 @@
                 <td>
                     {% for tag_id in article.tags|split(',') %}
                     {% if loop.index > 1%},{% endif %}
-                    {{ tag_id }}
                     {% if tag_id %}
                     {{ dict_tags[tag_id].name }}
                     {% endif %}
