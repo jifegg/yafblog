@@ -15,6 +15,8 @@ class CacheFile():
             return self.read_json()
 
     def read_json(self):
+        if not os.path.exists(self.fpath):
+            return;
         f = open(self.fpath, 'r');
         f.close()
         with open(self.fpath, 'r') as f:
