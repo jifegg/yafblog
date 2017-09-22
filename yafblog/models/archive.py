@@ -23,9 +23,12 @@ class Archive(Model):
 
     @classmethod
     def dec_num(cls, month):
-        t = cls.findOne('id=?', [month])
+        t = cls.findOne('month=?', [month])
         archive = Archive(__data__=t)
         archive.num = archive.num - 1
-        archive.update()
+        if archive.num == 0:
+            archive.remove()
+        else:
+            archive.update()
 
 

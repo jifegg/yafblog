@@ -28,7 +28,10 @@ class Category(Model):
         t = cls.findOne('id=?', [category_id])
         category = Category(__data__=t)
         category.num = category.num - 1
-        category.update()
+        if archive.num == 0:
+            category.remove()
+        else:
+            category.update()
 
     @classmethod
     def cache(cls):

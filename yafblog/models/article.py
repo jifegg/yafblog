@@ -87,5 +87,9 @@ class Article(Model):
         if article.tags:
             for tag_id in article.tags.split(','):
                 Tag.dec_num(tag_id)
+
+        # archive
+        Archive.dec_num(article.archive)
+
         res = article.remove()
         return res

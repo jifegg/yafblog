@@ -22,7 +22,10 @@ class Tag(Model):
         t = cls.findOne('id=?', [tag_id])
         tag = Tag(__data__=t)
         tag.num = tag.num - 1
-        tag.update()
+        if tag.num == 0:
+            tag.remove()
+        else:
+            tag.update()
 
     @classmethod
     def cache(cls):
