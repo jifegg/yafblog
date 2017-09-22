@@ -26,8 +26,9 @@ app.jinja_env.filters['num_to_date'] = num_to_date
 @app.before_request
 def cache_file():
     cat_cache = CacheFile('category', 'json')
-    tag_cache = CacheFile('tag', 'json')
     g.categorys = cat_cache.read()
+
+    tag_cache = CacheFile('tag', 'json')
     g.tags = tag_cache.read()
     g.page = int(request.args.get('page', 1))
     if g.page < 0 :

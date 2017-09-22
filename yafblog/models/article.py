@@ -81,7 +81,7 @@ class Article(Model):
         article = Article(__data__=article_info)
 
         # category
-        Category.inc_num(article.category)
+        Category.dec_num(article.category)
 
         # tag
         if article.tags:

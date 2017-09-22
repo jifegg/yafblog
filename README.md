@@ -13,7 +13,7 @@ git clone git@github.com:jifegg/yafblog.git
 pip install virtualenv
 cd yafblog
 virtualenv venv
-venv/bin/activate # venv\scripts\activate(windows)
+source venv/bin/activate # venv\scripts\activate(windows)
 ```
 
 #### 安装依赖
@@ -28,7 +28,10 @@ source yafblog/schema.sql
 ```
 > 或者可以通过 flask initdb 方式来导入数据表（需要设置FLASK_APP）
 
-> 数据库的配置文件在 yafblog/config.py 中，默认加载 DevelopmentConfig 配置
+#### 配置文件
+配置文件在 yafblog/config.py.example 中，默认加载 DevelopmentConfig 配置
+
+> 需要复制一份重命名 config.py
 
 #### 运行
 ```shell
@@ -63,6 +66,7 @@ flask 自带的 server 不适用于生产环境，需要使用其它 server 代�
 
 ## 依赖
 
+* [python3](https://www.python.org/)
 * [flask](https://github.com/pallets/flask)
 * [mistune](https://github.com/lepture/mistune)
 * [pygments](http://pygments.org/)
@@ -74,7 +78,7 @@ flask 自带的 server 不适用于生产环境，需要使用其它 server 代�
 ## TODO
 
 - [x]  friendlink
-- [ ]  优化界面的自适应
+- [ ] 优化界面的自适应
 - [ ]  添加 about 页面
 - [ ]  后台导出 markdown 文件
 - [ ]  文章页添加查看 markdown 原文

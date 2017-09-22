@@ -4,9 +4,10 @@ from datetime import datetime,timedelta,date
 from time import mktime
 
 class CacheFile():
-    def __init__(self, fname, ftype):
+    def __init__(self, fname, ftype, finit=[]):
         self.fname = fname
         self.ftype = ftype
+        self.finit = finit
         base_dir = os.path.dirname(__file__)
         self.fpath = base_dir+'/caches/'+fname+'.'+ftype
 
@@ -16,7 +17,7 @@ class CacheFile():
 
     def read_json(self):
         if not os.path.exists(self.fpath):
-            return;
+            self.write_json(self.finit)
         f = open(self.fpath, 'r');
         f.close()
         with open(self.fpath, 'r') as f:
@@ -30,6 +31,9 @@ class CacheFile():
         with open(self.fpath, 'w') as f:
             json.dump(text, f)
 
+    def is_exists(self):
+        return os.path.exists(self.fpath)
+
 def find_dict_in_list(res, key, val):
     for r in res:
         if r[key] == val or str(r[key]) == str(val):
@@ -38,8 +42,9 @@ def find_dict_in_list(res, key, val):
 
 def list_to_dict(value, key = 'id'):
     d = {}
-    for v in value:
-        d[str(v[key])] = v
+    if value is not None:
+        for v in value:
+            d[str(v[key])] = v
     return d
 
 def datetimeformat(value, format='%Y-%m-%d %H:%I'):
