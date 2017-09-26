@@ -15,5 +15,6 @@ setup(
         'mistune',
         'pygments',
         'pymysql',
+        'gunicorn',
     ],
 )
