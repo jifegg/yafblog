@@ -26,11 +26,12 @@ def index():
                             categorys=g.categorys,
                             tags=g.tags,
                             archives=archives,
+                            page_name='home',
                             page_list=page_list)
 
 @home.route('/category')
 def category():
-    return render_template('home/cloud.html', categorys=g.categorys)
+    return render_template('home/cloud.html', categorys=g.categorys, page_name='category')
 
 @home.route('/category/<category_id>')
 @article_page
@@ -51,7 +52,7 @@ def index_category(category_id):
 
 @home.route('/tag')
 def tag():
-    return render_template('home/cloud.html', tags=g.tags)
+    return render_template('home/cloud.html', tags=g.tags, page_name='tag')
 
 @home.route('/tag/<tag_id>')
 @article_page
