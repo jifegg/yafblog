@@ -5,5 +5,4 @@ __pycache__/
 *.pyc
 *.pyo
 *.egg-info
-yafblog/caches/
 yafblog/config.py
