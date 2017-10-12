@@ -26,6 +26,9 @@
                 {% endfor %}
                 {% endif %}
             </span>
+            <span>
+                &nbsp;&nbsp;|&nbsp;&nbsp;<a target="_blank" href="{{url_for('home.article_raw', article_id=article.id)}}">查看源文件</a>
+            </span>
         </div>
     </header>
     <div class="content">

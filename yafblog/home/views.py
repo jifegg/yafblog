@@ -1,5 +1,5 @@
 from functools import wraps
-from flask import Blueprint, render_template, g, url_for, abort,request
+from flask import Blueprint, render_template, g, url_for, abort,request, Response
 from ..models.article import Article
 from ..models.category import Category
 from ..models.tag import Tag
@@ -101,6 +101,13 @@ def article(article_id):
 
     article['tags'] = article['tags'].split(',')
     return render_template('home/article.html', article=article, categorys=g.categorys, tags=g.tags)
+
+@home.route('/article/<article_id>/raw')
+def article_raw(article_id):
+    article = Article.findOne('id=?', [article_id])
+    if not article :
+        abort(404)
+    return Response('##'+article['title']+'\n\n'+article['content'], content_type='text/plain; charset=utf-8')
 
 @home.route('/search/<keyword>')
 def search(keyword):

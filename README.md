@@ -78,7 +78,7 @@ flask 自带的 server 不适用于生产环境，需要使用其它 server 代�
 - [ ]  优化界面的自适应
 - [ ]  添加 about 页面
 - [ ]  后台导出 markdown 文件
-- [ ]  文章页添加查看 markdown 原文
+- [x]  文章页添加查看 markdown 原文
 - [ ]  评论功能，留言本
 - [ ]  I18N
 
