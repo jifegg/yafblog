@@ -8,7 +8,7 @@ class Category(Model):
     id = IntegerField(primary_key=True)
     name = StringField(ddl='varchar(50)')
     num = IntegerField()
-    addtime = IntegerField(default=int(time.time()))
+    addtime = IntegerField()
 
     def update(self):
         res = super().update()
@@ -43,6 +43,7 @@ class Category(Model):
         has_one = Category.findOne('name=?', [self.name])
         if has_one:
             return {'code':-1, 'msg':'类别已存在'}
+        self.addtime = int(time.time())
         res = super().save()
         if res['code'] :
             Category.cache()

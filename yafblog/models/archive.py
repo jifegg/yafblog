@@ -8,17 +8,17 @@ class Archive(Model):
     id = IntegerField(primary_key=True)
     month = StringField(ddl='char(6)')
     num = IntegerField()
-    addtime = IntegerField(default=int(time.time()))
+    addtime = IntegerField()
 
     @classmethod
     def inc_num(cls, month):
-        t = cls.findOne('month=?', [month])
-        if t:
+        archive = cls.findOne('month=?', [month])
+        if archive:
             archive = Archive(__data__=t)
             archive.num = archive.num + 1
             archive.update()
         else: 
-            archive = Archive(month=month, num=1)
+            archive = Archive(month=month, num=1, addtime=int(time.time()))
             archive.save()
 
     @classmethod

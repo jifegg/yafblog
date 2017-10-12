@@ -8,7 +8,7 @@ class Tag(Model):
     id = IntegerField(primary_key=True)
     name = StringField(ddl='varchar(50)')
     num = IntegerField()
-    addtime = IntegerField(default=int(time.time()))
+    addtime = IntegerField()
 
     @classmethod
     def inc_num(cls, tag_id):
@@ -37,6 +37,7 @@ class Tag(Model):
         has_one = Tag.findOne('name=?', [self.name])
         if has_one:
             return {'code':-1, 'msg':'标签已存在'}
+        self.addtime = int(time.time())
         res = super().save()
         if res['code'] :
             Tag.cache()

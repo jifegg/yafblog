@@ -29,10 +29,11 @@
                     }
                 });
             }) 
-            submitForm('#modal-form');
-            $('#modal').on('hidden.bs.modal', function (e) {
-                window.location.reload();
-            })
+            submitForm('#modal-form', function(){
+              $('#modal').on('hidden.bs.modal', function (e) {
+                  window.location.reload();
+              })
+            });
         },
         initLogin: function(){
             if ($('#login-form').length) {

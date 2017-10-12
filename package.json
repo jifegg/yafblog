@@ -21,8 +21,10 @@
     "gulp-concat": "^2.6.1",
     "gulp-csso": "^2.0.0",
     "gulp-replace": "^0.5.4",
-    "gulp-sass": "^3.1.0",
     "gulp-uglify": "^2.0.1",
     "simplemde": "^1.11.2"
+  },
+  "dependencies": {
+    "gulp-sass": "^3.1.0"
   }
 }
