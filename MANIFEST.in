@@ -1,7 +1,7 @@
-recursive-include yafblog/admin/templates *
-recursive-include yafblog/admin/static *
-recursive-include yafblog/home/templates *
-recursive-include yafblog/home/static *
+graft  yafblog/admin/templates
+graft  yafblog/admin/static
+graft  yafblog/home/templates
+graft  yafblog/home/static
 include yafblog/scheme.sql
 include run.py
 include package.json

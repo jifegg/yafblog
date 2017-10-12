@@ -47,7 +47,7 @@ def list_to_dict(value, key = 'id'):
             d[str(v[key])] = v
     return d
 
-def datetimeformat(value, format='%Y-%m-%d %H:%I'):
+def datetimeformat(value, format='%Y-%m-%d %H:%M'):
     return datetime.fromtimestamp(value).strftime(format)
 
 def num_to_date(val):

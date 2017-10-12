@@ -15,8 +15,8 @@ class Article(Model):
     toc_html = TextField()
     category = IntegerField()
     tags = StringField(ddl='varchar(50)')
-    archive = StringField(ddl='char(6)', default=time.strftime('%Y%m'))
-    addtime = IntegerField(default=int(time.time()))
+    archive = StringField(ddl='char(6)')
+    addtime = IntegerField()
 
     @classmethod
     def findAllByTag(cls, tag, **kw):
@@ -24,7 +24,11 @@ class Article(Model):
 
     
     def save(self):
-        # name
+        article_info = Article.findOne('title=?', [self.title])
+        if article_info:
+            return {'code':-1, 'msg':'该文章标题已存在'}
+        self.archive = time.strftime('%Y%m')
+        self.addtime = int(time.time())
         my_render = MyRenderer()
         my_render.reset_toc()
         markdown = mistune.Markdown(renderer=my_render)
@@ -46,6 +50,10 @@ class Article(Model):
         return super().save()
 
     def update(self, old):
+        if self.title != old['title']:
+            article_info = Article.findOne('title=?', [self.title])
+            if article_info:
+                return {'code':-1, 'msg':'该文章标题已存在'}
         my_render = MyRenderer()
         my_render.reset_toc()
         markdown = mistune.Markdown(renderer=my_render)
