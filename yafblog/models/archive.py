@@ -12,8 +12,8 @@ class Archive(Model):
 
     @classmethod
     def inc_num(cls, month):
-        archive = cls.findOne('month=?', [month])
-        if archive:
+        t = cls.findOne('month=?', [month])
+        if t:
             archive = Archive(__data__=t)
             archive.num = archive.num + 1
             archive.update()
