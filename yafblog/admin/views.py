@@ -78,7 +78,7 @@ def logout():
 def article():
     article_num = Article.count()
     limit = ((g.page - 1) * g.per_page, g.per_page)
-    articles = Article.findAll(None,None,limit=limit)
+    articles = Article.findAll(None,orderBy='addtime DESC',limit=limit)
     page_list = pages(g.page, article_num, g.per_page,  url_for('admin.article'))
     return render_template('admin/article.html',
                             articles=articles,

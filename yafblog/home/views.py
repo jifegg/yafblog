@@ -19,7 +19,7 @@ def article_page(f):
 @article_page
 def index():
     archives = Archive.findAll()
-    articles = Article.findAll(None,None,limit=g.limit)
+    articles = Article.findAll(None,orderBy='addtime DESC',limit=g.limit)
     page_list = pages(g.page, g.article_num, g.per_page,  url_for('home.index'))
     return render_template('home/index.html',
                             articles=articles,
